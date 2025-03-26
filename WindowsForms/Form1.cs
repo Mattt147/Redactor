@@ -69,6 +69,7 @@ namespace WindowsForms
         private void button2_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = original;
+            comboBox1.Text = "";
             trackBar1.Value = 5;
             trackBar2.Value = 5;
         }
