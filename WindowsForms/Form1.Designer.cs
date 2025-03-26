@@ -28,16 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
-            // 
-            // Form1
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(932, 541);
-            Name = "Form1";
-            Text = "Form1";
-            ResumeLayout(false);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             button1 = new Button();
@@ -69,6 +59,7 @@
             button1.TabIndex = 1;
             button1.Text = "Загрузить фото";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // button4
             // 
@@ -119,11 +110,12 @@
             // 
             comboBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Чёрно-белый фильтр", "Ретро фильтр", "Зернистось", "Винтаж", "Тусклость ", "Яркость" });
+            comboBox1.Items.AddRange(new object[] { "Чёрно-белый фильтр", "Ретро фильтр", "Контрастность ", "Яркость", "Негатив" });
             comboBox1.Location = new Point(521, 31);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(221, 29);
             comboBox1.TabIndex = 11;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
             // 

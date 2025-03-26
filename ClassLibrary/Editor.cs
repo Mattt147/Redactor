@@ -6,19 +6,30 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ClassLibrary
-{
+{   
+   /// <summary>
+   /// Класс для редактирования фотографий
+   /// </summary>
     public class Editor
-    {
+    {   
+
         IRedactorStrategy strategy;
+
+
+
         public Editor(IRedactorStrategy strategy)
         {
             this.strategy = strategy;
         }
+
+
+
 
         public Bitmap Edit(Bitmap bm)
         {
             Bitmap res = strategy.Edit(bm);
             return res;
         }
+
     }
 }
