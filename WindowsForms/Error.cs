@@ -12,12 +12,18 @@ namespace WindowsForms
 {
     public partial class Error : Form
     {
-        public Error()
+        public Error(string msg)
         {
             InitializeComponent();
+            label2.Text = msg;
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Error_Load(object sender, EventArgs e)
         {
 
         }

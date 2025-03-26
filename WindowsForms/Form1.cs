@@ -11,7 +11,7 @@ namespace WindowsForms
         Bitmap original;
         Bitmap primeBmp;
         Bitmap rotate;
-
+        Error error;
         private void button1_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
@@ -57,7 +57,9 @@ namespace WindowsForms
             }
             else
             {
-                MessageBox.Show("Сначала выберите фото для редактирования");
+                comboBox1.Text = "";
+                error = new Error("Выберите фото для редактирования");
+                error.ShowDialog();
                 return;
             }
         }
@@ -68,8 +70,11 @@ namespace WindowsForms
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            bmp = new Bitmap(original); // Создаем новую копию оригинала
-            pictureBox1.Image = bmp;
+            if (bmp != null)
+            {
+                bmp = new Bitmap(original);
+                pictureBox1.Image = bmp;
+            }
             comboBox1.Text = "";
             trackBar1.Value = 5;
             trackBar2.Value = 5;

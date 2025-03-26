@@ -36,9 +36,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
-            label2.Location = new Point(32, 82);
+            label2.Location = new Point(37, 109);
             label2.Name = "label2";
-            label2.Size = new Size(97, 37);
+            label2.Size = new Size(120, 46);
             label2.TabIndex = 1;
             label2.Text = "label2";
             // 
@@ -46,23 +46,25 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 26.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 204);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new Size(166, 47);
+            label1.Size = new Size(209, 60);
             label1.TabIndex = 0;
             label1.Text = "Ошибка";
             label1.Click += label1_Click;
             // 
             // Error
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(540, 277);
+            ClientSize = new Size(819, 369);
             Controls.Add(label1);
             Controls.Add(label2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Error";
             Text = "Error";
+            Load += Error_Load;
             ResumeLayout(false);
             PerformLayout();
         }
