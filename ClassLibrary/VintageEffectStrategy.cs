@@ -65,7 +65,7 @@ namespace ClassLibrary
         
         private void addTextures(ref Bitmap newImage)
         {
-            Bitmap overlayImage = new Bitmap("C:\\2 курс биллиг\\редактор\\scr.png");
+            Bitmap overlayImage = new Bitmap("C:/Users/matve/source/repos/Redactor/scr.png");
 
             Bitmap resizedOverlayImage = new Bitmap(overlayImage, newImage.Size);
 
