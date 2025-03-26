@@ -10,7 +10,7 @@ namespace WindowsForms
         Bitmap bmp;
         Bitmap original;
         Bitmap primeBmp;
-
+        Bitmap rotate;
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -68,10 +68,12 @@ namespace WindowsForms
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = original;
+            bmp = new Bitmap(original); // Создаем новую копию оригинала
+            pictureBox1.Image = bmp;
             comboBox1.Text = "";
             trackBar1.Value = 5;
             trackBar2.Value = 5;
+            
         }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace WindowsForms
             }
         }
 
-       
+
         /// <summary>
         /// Изменение контрастности
         /// </summary>
@@ -102,6 +104,52 @@ namespace WindowsForms
                 Editor ed = new Editor(new ContrastStrategy(trackBar2.Value));
                 Bitmap edit = ed.Edit(bmp);
                 pictureBox1.Image = edit;
+            }
+        }
+        /// <summary>
+        /// Поворот на 90 градусов влево
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                rotate = new Bitmap(bmp);
+                rotate.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                bmp = rotate;
+                pictureBox1.Image = bmp;
+            }
+
+        }
+        /// <summary>
+        /// Поворот вправо на 90 градусов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                rotate = new Bitmap(bmp);
+                rotate.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                bmp = rotate;
+                pictureBox1.Image = bmp;
+            }
+        }
+        /// <summary>
+        /// Отзеркаливание 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                rotate = new Bitmap(bmp);
+                rotate.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                bmp = rotate;
+                pictureBox1.Image = bmp;
             }
         }
     }

@@ -89,6 +89,7 @@
             button5.Size = new Size(64, 73);
             button5.TabIndex = 5;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -99,6 +100,7 @@
             button6.Size = new Size(67, 73);
             button6.TabIndex = 6;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // button7
             // 
@@ -119,6 +121,7 @@
             button8.Size = new Size(66, 73);
             button8.TabIndex = 8;
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // comboBox1
             // 
