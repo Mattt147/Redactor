@@ -8,6 +8,7 @@ namespace WindowsForms
             InitializeComponent();
         }
         Bitmap bmp;
+        Bitmap original;
         Bitmap primeBmp;
 
 
@@ -21,37 +22,86 @@ namespace WindowsForms
                 primeBmp = new Bitmap(fd.FileName);
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.Image = bmp;
-                
+                original = bmp;
+
             }
         }
-
+        /// <summary>
+        /// Выбор фильтра
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Bitmap edit = null;
             Editor ed = null;
-            switch (comboBox1.SelectedIndex)
+            if (pictureBox1.Image != null)
             {
-                case 0:
+                switch (comboBox1.SelectedIndex)
+                {
+                    case 0:
 
-                    ed = new Editor(new GrayscaleStrategy());
-                    break;
-                case 1:
-                    ed = new Editor(new VintageEffectStrategy());
-                    break;
-                case 2:
-                    ed = new Editor(new ContrastStrategy(2.7f));
-                    break;
-                case 3:
-                    ed = new Editor(new BrigthtnessStrategy(2));
-                    break;
-                case 4:
-                    ed = new Editor(new NegativeStrategy());
-                    break;
-                default:
-                    break;
+                        ed = new Editor(new GrayscaleStrategy());
+                        break;
+                    case 1:
+                        ed = new Editor(new VintageEffectStrategy());
+                        break;
+                    case 2:
+                        ed = new Editor(new NegativeStrategy());
+                        break;
+                    default:
+                        break;
+                }
+                bmp = ed.Edit(bmp);
+                pictureBox1.Image = bmp;
             }
-            bmp = ed.Edit(bmp);
-            pictureBox1.Image = bmp;
+            else
+            {
+                MessageBox.Show("Сначала выберите фото для редактирования");
+                return;
+            }
+        }
+        /// <summary>
+        /// отмена изменений
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = original;
+            trackBar1.Value = 5;
+            trackBar2.Value = 5;
+        }
+
+        /// <summary>
+        /// Изменение яркости
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Editor ed = new Editor(new BrigthtnessStrategy(trackBar1.Value));
+                Bitmap edit = ed.Edit(bmp);
+                pictureBox1.Image = edit;
+            }
+        }
+
+       
+        /// <summary>
+        /// Изменение контрастности
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Editor ed = new Editor(new ContrastStrategy(trackBar2.Value));
+                Bitmap edit = ed.Edit(bmp);
+                pictureBox1.Image = edit;
+            }
         }
     }
 }
